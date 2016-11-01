@@ -19,14 +19,15 @@ public class HeavyHitter{
 	public static final int k = 500; //For epsilon = 1/k in the count-min sketch
 	public static final double CONFIDENCE = 0.999;
 	public static final int numHashFunctions = (int) Math.log(1/(1-CONFIDENCE)) + 1;
-	public static final int cmWidth = (int) (2.71*k);
-	public static final int P = 1409; //First prime larger than cmWidth. Used for hashing. 
+	public static final int cmWidth = (int) (2.71*2*k);
+	public static final int P = 2801; //Prime larger than cmWidth. Used for hashing. 
 	
 	public static int[][] hashFunctions = new int[numHashFunctions][2]; //represents a and b values
 	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		
+		generateHashFunctions();
 		
 		
 		ArrayList<String> m = majority();
@@ -106,7 +107,7 @@ public class HeavyHitter{
 				cmSketch[i][j] = 0;
 			}
 		
-		generateHashFunctions();
+		
 		String ht; 
 		int minFreq;
 		int index;
